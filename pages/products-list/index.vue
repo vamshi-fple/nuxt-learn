@@ -17,17 +17,17 @@
             <th class="p-3 border">Name</th>
             <th class="p-3 border">Quantity</th>
             <th class="p-3 border">Price</th>
+            <th class="p-3 border">Total Price</th>
             <th class="p-3 border">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in items" :key="item.id" class="hover:bg-gray-50">
-            <td class="p-3 border">{{   }}</td>
+          <tr v-for="(item, index) in items" :key="item.id || index" class="hover:bg-gray-50">
+            <td class="p-3 border">{{  index + 1 }}</td>
             <td class="p-3 border">{{ item.name }}</td>
             <td class="p-3 border">{{ item.quantity }}</td>
-            <td class="p-3 border">${{ item.price.toFixed(2) }} <br />
-              <a >  ${{ item.quantity }}  * ${{ item.price.toFixed(2) }}</a>
-            </td>
+            <td class="p-3 border">₹{{ item.price.toFixed(2) }} </td>
+            <td class="p-3 border">₹{{ (item.quantity * item.price).toFixed(2) }}</td>
             <td class="p-3 border">
               <button @click="openEditModal(item)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded mr-2 btn">✎ Edit </button>
               <button @click="deleteItem(item)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded btn">🗑️ Delete</button>
@@ -36,12 +36,14 @@
         </tbody>
         <tfoot>
           <tr v-if="items.length === 0" class="bg-gray-100">
-            <td class="p-3 border text-center" colspan="5">No products available</td>
+            <td class="p-3 border text-center" colspan="6">No products available</td>
           </tr>
           <tr v-else class="bg-gray-100 font-semibold">
             <td class="p-3 border" colspan="2">Total</td>
             <td class="p-3 border">{{ totalQuantity }}</td>
-            <td class="p-3 border">${{ totalPrice.toFixed(2) }}</td>
+            <td class="p-3 border"></td>
+
+            <td class="p-3 border">₹{{ totalPrice.toFixed(2) }}</td>
             <td class="p-3 border">
               <button 
                 @click="clearAll"
@@ -84,7 +86,7 @@ const totalPrice = computed(() =>
   items.value.reduce((sum, item) => sum + (item.quantity * item.price), 0)
 );
 
-function openAddModal() {
+const openAddModal = () => {
   isEditMode.value = false;
   modalItem.value = { id: null, name: '', quantity: 0, price: 0 };
   showModal.value = true;

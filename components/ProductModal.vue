@@ -42,19 +42,31 @@
                   required
                 >
               </div>
+              <div>
+                <label class="block text-gray-700 mb-2" for="price"> Total Price</label>
+                <input
+                  id="price"
+                  type="number"
+                 :value="formData.price * formData.quantity"
+                  min="0.01"
+                  step="0.01"
+                  class="w-full px-3 py-2 border rounded"
+                readonly
+                >
+              </div>
             </div>
             
             <div class="flex justify-end space-x-3">
               <button
                 type="button"
                 @click="close"
-                class="px-4 py-2 border rounded hover:bg-gray-100"
+                class="px-4 py-2 border rounded hover:bg-gray-100 btn"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 btn"
               >
                 {{ isEdit ? 'Update' : 'Save' }}
               </button>
@@ -105,5 +117,11 @@
   </script>
   
   <style scoped>
- 
+ .btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
   </style>
