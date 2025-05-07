@@ -1,16 +1,9 @@
 
 
 <template>
-  <AppHeader />
-  <NuxtLayout>
-    <div class="page-wrapper">
-      
-        <NuxtPage />
-      
-    </div>
-    <!-- <NuxtRouteAnnouncer /> -->
+  <NuxtLayout :name="layout">
+    <NuxtPage />
   </NuxtLayout>
-  <AppFooter />
 </template>
 
 <style scoped>
@@ -21,3 +14,6 @@
   min-height: 70vh;
 }
 </style>
+<script setup>
+const layout = "default";
+</script>

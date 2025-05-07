@@ -10,7 +10,9 @@
       </div>
     </footer>
   </template>
-  
+  <script setup>
+  definePageMeta({ layout: 'default' })
+  </script>
   <style scoped>
   .footer-container {
     display: flex;
