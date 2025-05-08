@@ -127,13 +127,3 @@ function clearAll() {
   items.value = [];
 }
 </script>
-
-<style scoped>
-.btn {
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-</style>
