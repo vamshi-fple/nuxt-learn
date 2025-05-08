@@ -59,7 +59,6 @@ const decrement = () => {
 };
 
 const addToCart = () => {
-  debugger;
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const existingIndex = cart.findIndex((item) => item.id === product.value.id);
 
